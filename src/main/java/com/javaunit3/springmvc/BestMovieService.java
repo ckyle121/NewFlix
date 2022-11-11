@@ -6,14 +6,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BestMovieService {
+
     private Movie movie;
+
     @Autowired
-    public BestMovieService(@Qualifier("titanicMovie") Movie movie){
+    public BestMovieService(@Qualifier("titanicMovie") Movie movie)
+    {
         this.movie = movie;
     }
 
-    public Movie getBestMovie(){
+    public Movie getBestMovie() {
         return movie;
     }
-
 }
