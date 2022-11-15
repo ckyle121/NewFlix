@@ -30,7 +30,17 @@ public class MovieController {
     }
 
     @RequestMapping("/voteForBestMovieForm")
-    public String voteForBestMovieFormPage() {
+    public String voteForBestMovieFormPage(Model model) {
+        Session session = sessionFactory.getCurrentSession();
+
+        session.beginTransaction();
+
+        List<MovieEntity> movieEntityList = session.createQuery("from MovieEntity").list();
+
+        session.getTransaction().commit();
+
+        model.addAttribute("movies", movieEntityList);
+
         return "voteForBestMovie";
     }
 
